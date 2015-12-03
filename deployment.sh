@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#docker push stefand12/tictactoe
+docker push stefand12/tictactoe
 
 echo killing tester 
 
