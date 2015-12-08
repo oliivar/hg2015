@@ -39,7 +39,8 @@ module.exports = function(config) {
       'client/app/**/*.jade',
       'client/components/**/*.jade',
       'client/app/**/*.html',
-      'client/components/**/*.html'
+      'client/components/**/*.html',
+      'server/model/tictactoe.*.spec.js'
     ],
 
     preprocessors: {
