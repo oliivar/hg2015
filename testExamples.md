@@ -14,7 +14,7 @@ Event 1: starting new game
 
 Event 2: player 1 wins
 {
-	
+
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
@@ -67,6 +67,7 @@ Event 2: player 1 wins
 
 Event 3 player 1 wins
 {
+
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
@@ -105,6 +106,7 @@ Event 3 player 1 wins
 
 Event 4: Player 2 wins
 {
+
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
@@ -150,6 +152,7 @@ Event 4: Player 2 wins
 
 Event 5: Draw
 {
+
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
@@ -216,6 +219,7 @@ Event 5: Draw
 
 Event 6: illegal move
 {
+
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
@@ -233,6 +237,7 @@ Event 6: illegal move
 
 Event 7: not your turn 
 {
+
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
@@ -250,6 +255,7 @@ Event 7: not your turn
 
 Event 8: player disconnects
 {
+	
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
