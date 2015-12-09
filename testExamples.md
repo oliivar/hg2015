@@ -1,5 +1,6 @@
 Event 1: starting new game
 {
+
 	Creating game
 	Given []
 	When  [Create game]
@@ -13,6 +14,7 @@ Event 1: starting new game
 
 Event 2: player 1 wins
 {
+	
 	Player 1 makes a move
 	Given [(0,0,) (1,0,) (2,0,)
 	       (0,1,) (1,1,) (2,1,)
