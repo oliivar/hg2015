@@ -20,7 +20,8 @@ module.exports = function tictactoeCommandHandler(events) {
   };
 
   function isWinner() {
-    if(gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2]) {
+    if((gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2])
+      || (gameState.board[1] === gameState.board[4] && gameState.board[4] === gameState.board[7])) {
       return true;
     }
     return false;
@@ -97,6 +98,7 @@ module.exports = function tictactoeCommandHandler(events) {
         }];
       } else {
         gameState.board[[cmd.place]] = cmd.symbol;
+        console.log(gameState.board);
         if(isWinner() === true){
           return[{
             id: cmd.id,

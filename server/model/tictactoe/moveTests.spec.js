@@ -22,7 +22,6 @@ describe('Game move commands', function(){
   });
 
   it('Should place X in place(1) on empty board',function(){
-    given;
     when={
       id:"80085",
       command:"makeMove",
@@ -112,7 +111,7 @@ describe('Game move commands', function(){
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  it('Player should win',function(){
+  it('Player should win on horizontal row',function(){
     given.push({
       event:"placed",
       place: 0,
@@ -147,30 +146,50 @@ describe('Game move commands', function(){
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:50"
-    }]; 
+    }];
 
     var actualEvents = tttCommandHandler(given).executeCommand(when);
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  /*it('Test',function(){
-    given;
+  it('Player should win on vertical row',function(){
+    given.push({
+        event:"placed",
+        place: 0,
+        symbol: "X"
+      },
+      {
+        event:"placed",
+        place: 4,
+        symbol: "O"
+      },{
+        event:"placed",
+        place: 8,
+        symbol: "X"
+      },
+      {
+        event:"placed",
+        place: 7,
+        symbol: "O"
+      },{
+        event:"placed",
+        place: 6,
+        symbol: "X"
+      });
     when={
       id:"80085",
       command:"makeMove",
       place: 1,
-      symbol: 'X',
-      userName : "Stebbi",
+      symbol: 'O',
+      userName : "Hrolfur",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:44"
     };
     then=[{
       id:"80085",
-      event:"placed",
-      place: 1,
-      symbol: "X",
-      userName: "Stebbi",
+      event:"Hrolfur Wins",
+      userName: "Hrolfur",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:44"
     }];
@@ -178,5 +197,5 @@ describe('Game move commands', function(){
     var actualEvents = tttCommandHandler(given).executeCommand(when);
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
-  });*/
+  });
 });
