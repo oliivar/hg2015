@@ -19,6 +19,13 @@ module.exports = function tictactoeCommandHandler(events) {
     }
   };
 
+  function isWinner() {
+    if(gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2]) {
+      return true;
+    }
+    return false;
+  }
+
   _.each(events, function(event){
     var eventHandler = eventHandlers[event.event];
     if(eventHandler) eventHandler(event);
@@ -70,6 +77,8 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "makeMove": function(cmd) {
+      //console.log();
+
       console.log(gameState.board);
       console.log('whosTurn = '+gameState.whosTurn + ' symbol = ' + cmd.symbol);
       if (gameState.board[cmd.place] === 'X' || gameState.board[cmd.place] === 'O') {
@@ -92,6 +101,15 @@ module.exports = function tictactoeCommandHandler(events) {
         }];
       } else {
         gameState.board[[cmd.place]] = cmd.symbol;
+        if(isWinner() === true){
+          return[{
+            id: cmd.id,
+            event: cmd.userName + ' Wins',
+            userName: cmd.userName,
+            gameID: cmd.gameID,
+            timeStamp: cmd.timeStamp,
+          }];
+        }
         return[{
           id: cmd.id,
           event: 'placed',

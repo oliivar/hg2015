@@ -46,7 +46,7 @@ describe('Game move commands', function(){
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  it('Should try to place O in 1 on when 1 already occupied',function(){
+  it('Should try to place O in 1 when 1 already occupied',function(){
     given.push({
       id:"80085",
       event:"placed",
@@ -55,9 +55,7 @@ describe('Game move commands', function(){
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:50"
-    }
-
-    );
+    });
 
     when={
       id:"80085",
@@ -94,6 +92,43 @@ describe('Game move commands', function(){
     then=[{
       id:"80085",
       event:"NotYourTurn",
+      userName: "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:50"
+    }];
+
+    var actualEvents = tttCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
+
+  it('Player should win',function(){
+    given.push({
+      event:"placed",
+      place: 3,
+      symbol: "O"
+    },
+    {
+      event:"placed",
+      place: 0,
+      symbol: "X"
+    },{
+      event:"placed",
+      place: 8,
+      symbol: "O"
+    });
+    when={
+      id:"80085",
+      command:"makeMove",
+      place: 2,
+      symbol: 'X',
+      userName : "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:50"
+    };
+    then=[{
+      id:"80085",
+      event:"Stebbi Wins",
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:50"
