@@ -5,7 +5,8 @@ module.exports = function tictactoeCommandHandler(events) {
     board: [0,1,2,
             3,4,5,
             6,7,8],
-    whosTurn: 'X'
+    whosTurn: 'X',
+    winner: false
   };
 
   var eventHandlers={
@@ -16,6 +17,12 @@ module.exports = function tictactoeCommandHandler(events) {
       } else {
         gameState.whosTurn = 'X';
       }
+    },
+    'Winner': function(event) {
+      console.log('Avvvvdvdvdvdv');
+      if (gameState.winner === true) {
+        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+      }
     }
   };
 
@@ -24,6 +31,12 @@ module.exports = function tictactoeCommandHandler(events) {
       return true;
     }
     return false;
+  }
+
+  function resetBoard() {
+    gameState.board = [0,1,2,
+      3,4,5,
+      6,7,8];
   }
 
   _.each(events, function(event){
@@ -102,9 +115,11 @@ module.exports = function tictactoeCommandHandler(events) {
       } else {
         gameState.board[[cmd.place]] = cmd.symbol;
         if(isWinner() === true){
+          gameState.board = resetBoard();
           return[{
             id: cmd.id,
-            event: cmd.userName + ' Wins',
+            event: 'Winner',
+            winner: true,
             userName: cmd.userName,
             gameID: cmd.gameID,
             timeStamp: cmd.timeStamp,

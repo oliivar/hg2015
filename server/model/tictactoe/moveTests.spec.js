@@ -8,7 +8,6 @@ describe('Game move commands', function(){
     event:"GameCreated",
     userName: "Stebbi",
     gameName: "Stebbaleikur",
-    whosTurn: 1,
     gameID: "1337",
     timeStamp: "2015.12.02T11:29:44"
   },
@@ -128,7 +127,8 @@ describe('Game move commands', function(){
     };
     then=[{
       id:"80085",
-      event:"Stebbi Wins",
+      event:"Winner",
+      winner: true,
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:50"
@@ -138,4 +138,30 @@ describe('Game move commands', function(){
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
+
+  /*it('Test',function(){
+    given;
+    when={
+      id:"80085",
+      command:"makeMove",
+      place: 1,
+      symbol: 'X',
+      userName : "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:44"
+    };
+    then=[{
+      id:"80085",
+      event:"placed",
+      place: 1,
+      symbol: "X",
+      userName: "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:44"
+    }];
+
+    var actualEvents = tttCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });*/
 });
