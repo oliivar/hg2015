@@ -16,6 +16,7 @@ describe('Create game command', function(){
       id:"80085",
       event:"GameCreated",
       userName: "Stebbi",
+      whosTurn: 1,
       gameID: "1337",
       timeStamp: "2015.12.02T11:29:44"
     }];
@@ -40,6 +41,7 @@ describe('Create game command', function(){
       event:"GameCreated",
       userName: "Hrolfur",
       gameName: "Hrolfsleikur",
+      whosTurn: 1,
       gameID: "12",
       timeStamp: "2017.12.02T10:29:44"
     }];
