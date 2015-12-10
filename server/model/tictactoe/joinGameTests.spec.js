@@ -1,6 +1,6 @@
 var tttCommandHandler = require('./tttCommandHandler');
 
-describe('join game command', function(){
+describe('Join game command', function(){
 
   var given, when, then;
 

@@ -1,6 +1,6 @@
 var tttCommandHandler = require('./tttCommandHandler');
 
-describe('create game command', function(){
+describe('Create game command', function(){
   var given, when, then;
 
   it('create game without gameName',function(){
