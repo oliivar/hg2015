@@ -4,12 +4,18 @@ module.exports = function tictactoeCommandHandler(events) {
     gameCreatedEvent : events[0],
     board: [0,1,2,
             3,4,5,
-            6,7,8]
+            6,7,8],
+    whosTurn: 'X'
   };
 
   var eventHandlers={
     'placed': function(event){
       gameState.board[event.place] = event.symbol;
+      if (gameState.whosTurn === 'X') {
+        gameState.whosTurn = 'O';
+      } else {
+        gameState.whosTurn = 'X';
+      }
     }
   };
 
@@ -27,6 +33,7 @@ module.exports = function tictactoeCommandHandler(events) {
             id: cmd.id,
             event: "GameCreated",
             userName: cmd.userName,
+            whosTurn: 'X',
             gameID: cmd.gameID,
             timeStamp: cmd.timeStamp
           }];
@@ -36,6 +43,7 @@ module.exports = function tictactoeCommandHandler(events) {
             event: "GameCreated",
             userName: cmd.userName,
             gameName: cmd.gameName,
+            whosTurn: 'X',
             gameID: cmd.gameID,
             timeStamp: cmd.timeStamp
           }];
@@ -62,10 +70,21 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "makeMove": function(cmd) {
+      console.log(gameState.board);
+      console.log('whosTurn = '+gameState.whosTurn + ' symbol = ' + cmd.symbol);
       if (gameState.board[cmd.place] === 'X' || gameState.board[cmd.place] === 'O') {
         return[{
           id: cmd.id,
           event: 'illegalMove',
+          userName: cmd.userName,
+          gameID: cmd.gameID,
+          timeStamp: cmd.timeStamp,
+
+        }];
+      } else if (gameState.whosTurn !== cmd.symbol){
+        return[{
+          id: cmd.id,
+          event: 'NotYourTurn',
           userName: cmd.userName,
           gameID: cmd.gameID,
           timeStamp: cmd.timeStamp,
