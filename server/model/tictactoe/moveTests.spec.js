@@ -1,7 +1,7 @@
 var tttCommandHandler = require('./tttCommandHandler');
 
 describe('Game move commands', function(){
-  var when, then;
+  var given, when, then;
 
   beforeEach(function(){
     given = [{
