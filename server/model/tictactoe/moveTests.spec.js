@@ -214,7 +214,7 @@ describe('Game move commands', function(){
         place: 8,
         symbol: "X"
       },
-      { 
+      {
         event:"placed",
         place: 7,
         symbol: "O"
@@ -231,6 +231,67 @@ describe('Game move commands', function(){
     then=[{
       id:"80085",
       event:"Stebbi Wins",
+      userName: "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:44"
+    }];
+
+    var actualEvents = tttCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
+
+  it('Game should end in draw',function(){
+    given.push({
+        event:"placed",
+        place: 0,
+        symbol: "X"
+      },
+      {
+        event:"placed",
+        place: 8,
+        symbol: "O"
+      },{
+        event:"placed",
+        place: 2,
+        symbol: "X"
+      },
+      {
+        event:"placed",
+        place: 1,
+        symbol: "O"
+      },
+      {
+        event:"placed",
+        place: 6,
+        symbol: "X"
+      },{
+        event:"placed",
+        place: 3,
+        symbol: "O"
+      },
+      {
+        event:"placed",
+        place: 7,
+        symbol: "X"
+      },
+      {
+        event:"placed",
+        place: 4,
+        symbol: "O"
+      });
+    when={
+      id:"80085",
+      command:"makeMove",
+      place: 5,
+      symbol: 'X',
+      userName : "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:44"
+    };
+    then=[{
+      id:"80085",
+      event:"Draw",
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:44"

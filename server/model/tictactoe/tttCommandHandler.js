@@ -5,12 +5,14 @@ module.exports = function tictactoeCommandHandler(events) {
     board: [0,1,2,
             3,4,5,
             6,7,8],
-    whosTurn: 'X'
+    whosTurn: 'X',
+    turns: 0
   };
 
   var eventHandlers={
     'placed': function(event){
       gameState.board[event.place] = event.symbol;
+      gameState.turns += 1;
       if (gameState.whosTurn === 'X') {
         gameState.whosTurn = 'O';
       } else {
@@ -99,11 +101,19 @@ module.exports = function tictactoeCommandHandler(events) {
         }];
       } else {
         gameState.board[[cmd.place]] = cmd.symbol;
-        console.log(gameState.board);
         if(isWinner() === true){
           return[{
             id: cmd.id,
             event: cmd.userName + ' Wins',
+            userName: cmd.userName,
+            gameID: cmd.gameID,
+            timeStamp: cmd.timeStamp,
+          }];
+        }
+        if(gameState.turns === 8) {
+          return[{
+            id: cmd.id,
+            event: 'Draw',
             userName: cmd.userName,
             gameID: cmd.gameID,
             timeStamp: cmd.timeStamp,
