@@ -143,11 +143,11 @@ describe('Game move commands', function(){
     };
     then=[{
       id:"80085",
-      event:"Winner",
+      event:"Stebbi Wins",
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:50"
-    }];
+    }]; 
 
     var actualEvents = tttCommandHandler(given).executeCommand(when);
 

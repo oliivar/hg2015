@@ -77,10 +77,6 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "makeMove": function(cmd) {
-      //console.log();
-
-      console.log(gameState.board);
-      console.log('whosTurn = '+gameState.whosTurn + ' symbol = ' + cmd.symbol);
       if (gameState.board[cmd.place] === 'X' || gameState.board[cmd.place] === 'O') {
         return[{
           id: cmd.id,
@@ -104,7 +100,7 @@ module.exports = function tictactoeCommandHandler(events) {
         if(isWinner() === true){
           return[{
             id: cmd.id,
-            event: 'Winner',
+            event: cmd.userName + ' Wins',
             userName: cmd.userName,
             gameID: cmd.gameID,
             timeStamp: cmd.timeStamp,
