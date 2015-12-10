@@ -198,4 +198,46 @@ describe('Game move commands', function(){
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
+
+  it('Player should win on leaning row',function(){
+    given.push({
+        event:"placed",
+        place: 0,
+        symbol: "X"
+      },
+      {
+        event:"placed",
+        place: 6,
+        symbol: "O"
+      },{
+        event:"placed",
+        place: 8,
+        symbol: "X"
+      },
+      { 
+        event:"placed",
+        place: 7,
+        symbol: "O"
+      });
+    when={
+      id:"80085",
+      command:"makeMove",
+      place: 4,
+      symbol: 'X',
+      userName : "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:44"
+    };
+    then=[{
+      id:"80085",
+      event:"Stebbi Wins",
+      userName: "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:44"
+    }];
+
+    var actualEvents = tttCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
 });
