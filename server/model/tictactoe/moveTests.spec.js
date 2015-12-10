@@ -32,20 +32,30 @@ describe('Game move commands', function(){
     };
     then=[{
       id:"80085",
-      event:"placed(1,X)",
+      event:"placed",
+      place: 1,
+      symbol: "X",
       userName: "Stebbi",
       gameID: "1337",
       timeStamp: "2015.12.02T11:31:44"
     }];
- 
+
     var actualEvents = tttCommandHandler(given).executeCommand(when);
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  it('Should try to place X in (0,0) on when (0,0) already occupied',function(){
-    given.push("placed(0,0,X)");
-    //console.log(given);
+  it('Should try to place X in 1 on when 1 already occupied',function(){
+    given.push({
+      id:"80085",
+      event:"placed",
+      place: 1,
+      symbol: "X",
+      userName: "Stebbi",
+      gameID: "1337",
+      timeStamp: "2015.12.02T11:31:50"
+    });
+
     when={
       id:"80085",
       command:"makeMove",

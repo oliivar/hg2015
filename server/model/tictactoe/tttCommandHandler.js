@@ -1,10 +1,22 @@
+var _ = require('lodash');
 module.exports = function tictactoeCommandHandler(events) {
   var gameState = {
     gameCreatedEvent : events[0],
-    board: [[1,2,3],
-            [4,5,6],
-            [7,8,9]]
+    board: [0,1,2,
+            3,4,5,
+            6,7,8]
   };
+
+  var eventHandlers={
+    'placed': function(event){
+      gameState.board[event.place] = event.symbol;
+    }
+  };
+
+  _.each(events, function(event){
+    var eventHandler = eventHandlers[event.event];
+    if(eventHandler) eventHandler(event);
+  });
 
 
   var handlers = {
@@ -50,15 +62,27 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "makeMove": function(cmd) {
-      //if (cmd)
-      return[{
-        id: cmd.id,
-        event: 'placed('+ cmd.place + ',' + cmd.symbol+')',
-        userName: cmd.userName,
-        gameID: cmd.gameID,
-        timeStamp: cmd.timeStamp,
+      if (gameState.board[cmd.place] === 'X' || gameState.board[cmd.place] === 'O') {
+        return[{
+          id: cmd.id,
+          event: 'illegalMove',
+          userName: cmd.userName,
+          gameID: cmd.gameID,
+          timeStamp: cmd.timeStamp,
 
-      }];
+        }];
+      } else {
+        gameState.board[[cmd.place]] = cmd.symbol;
+        return[{
+          id: cmd.id,
+          event: 'placed',
+          place: cmd.place,
+          symbol: cmd.symbol,
+          userName: cmd.userName,
+          gameID: cmd.gameID,
+          timeStamp: cmd.timeStamp,
+        }];
+      }
     }
   };
 
