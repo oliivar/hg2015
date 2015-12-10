@@ -101,7 +101,7 @@ module.exports = function tictactoeCommandHandler(events) {
         }];
       } else {
         gameState.board[[cmd.place]] = cmd.symbol;
-        if(isWinner() === true){
+        if(isWinner() && gameState.turns > 3){
           return[{
             id: cmd.id,
             event: cmd.userName + ' Wins',
