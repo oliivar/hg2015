@@ -1,5 +1,5 @@
 var _ = require('lodash');
-module.exports = function tictactoeCommandHandler(events) {
+module.exports = function tttCommandHandler(events) {
   var gameState = {
     gameCreatedEvent : events[0],
     board: [0,1,2,
@@ -33,9 +33,8 @@ module.exports = function tictactoeCommandHandler(events) {
     if(eventHandler) eventHandler(event);
   });
 
-
   var handlers = {
-    "CreateGame": function (cmd) {
+    "createGame": function (cmd) {
       {
         if(cmd.gameName === undefined) {
           return [{
@@ -130,9 +129,18 @@ module.exports = function tictactoeCommandHandler(events) {
     }
   };
 
-  return {
+  /*return {
     executeCommand: function (cmd) {
       return handlers[cmd.command](cmd);
+    }
+  };*/
+  return {
+    executeCommand: function (cmd) {
+      var handler = handlers[cmd.command];
+      if(!handler){
+        throw new Error("No handler resolved for command " + JSON.stringify(cmd));
+      }
+      return handler(cmd);
     }
   };
 };

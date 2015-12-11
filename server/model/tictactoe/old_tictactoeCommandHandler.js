@@ -13,7 +13,7 @@ module.exports = function tictactoeCommandHandler(events) {
 
   _.each(events, function(event){
     var eventHandler = eventHandlers[event.event];
-    eventHandler && eventHandler(event);
+    if(eventHandler) eventHandler(event);
   });
 
   var handlers = {
@@ -21,12 +21,11 @@ module.exports = function tictactoeCommandHandler(events) {
       {
         return [{
           id: cmd.id,
-          gameId: cmd.gameId,
+          gameID: cmd.gameID,
           event: "GameCreated",
           userName: cmd.userName,
           timeStamp: cmd.timeStamp,
           name: cmd.name
-
         }];
       }
     },

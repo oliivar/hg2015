@@ -43,13 +43,13 @@ describe('tictactoe game context', function() {
     var boundedContext = require('./tictactoeBoundedContext')(eventStoreStub, commandHandlers);
 
     var emptyCommand = {
-      gameId: "123"
+      gameID: "123"
     };
 
     var events;
     boundedContext.handleCommand(emptyCommand).then(function(ev){
       events = ev;
-      should(executedCommand.gameId).be.exactly("123");
+      should(executedCommand.gameID).be.exactly("123");
       should(calledWithEventStoreId).be.exactly("123");
       should(events.length).be.exactly(0);
       should(storedEvents).be.exactly(events);
@@ -90,7 +90,7 @@ describe('tictactoe game context', function() {
     var boundedContext = require('./tictactoeBoundedContext')(mockStore, commandHandlers);
 
     var emptyCommand = {
-      gameId: "123"
+      gameID: "123"
     };
 
     boundedContext.handleCommand(emptyCommand).then(function(){
