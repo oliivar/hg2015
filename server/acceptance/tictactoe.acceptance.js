@@ -7,19 +7,21 @@ var acceptanceUrl = process.env.ACCEPTANCE_URL;
 
 describe('TEST ENV GET /api/gameHistory', function () {
 
+
   it('Should have ACCEPTANCE_URL environment variable exported.', function () {
+    console.log('ACCEPTANCEURL ' + acceptanceUrl);
     acceptanceUrl.should.be.ok;
   });
 
   it('should execute same test using old style', function (done) {
 
     var command =     {
-      id : "1234",
-      gameId : "999",
-      comm: "CreateGame",
-      userName: "Gulli",
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      id:"1234",
+      command:"createGame",
+      userName : "Hrolfur",
+      gameName: "Hrolfsleikur",
+      gameID: "1337",
+      timeStamp: "2017.12.02T10:29:44"
     };
 
     var req = request(acceptanceUrl);
@@ -30,7 +32,7 @@ describe('TEST ENV GET /api/gameHistory', function () {
       .end(function (err, res) {
         if (err) return done(err);
         request(acceptanceUrl)
-          .get('/api/gameHistory/999')
+          .get('/api/gameHistory/1337')
           .expect(200)
           .expect('Content-Type', /json/)
           .end(function (err, res) {
@@ -38,12 +40,13 @@ describe('TEST ENV GET /api/gameHistory', function () {
             res.body.should.be.instanceof(Array);
             should(res.body).eql(
               [{
-                "id": "1234",
-                "gameId": "999",
-                "event": "GameCreated",
-                "userName": "Gulli",
-                "name": "TheFirstGame",
-                "timeStamp": "2014-12-02T11:29:29"
+                id:"1234",
+                event:"GameCreated",
+                userName: "Hrolfur",
+                gameName: "Hrolfsleikur",
+                whosTurn: "X",
+                gameID: "1337",
+                timeStamp: "2017.12.02T10:29:44"
               }]);
             done();
           });
