@@ -32,13 +32,10 @@ module.exports = function tttCommandHandler(events) {
     var eventHandler = eventHandlers[event.event];
     if(eventHandler) eventHandler(event);
   });
-  console.log('AAAAAAAAAAAAAAAAWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWAAAAAAAAAAA');
   var handlers = {
     "createGame": function (cmd) {
       {
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
         if(cmd.gameName === undefined) {
-          console.log('AAAAAAAADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDAAAAAAAAAAA');
           return [{
             id: cmd.id,
             event: "GameCreated",
@@ -48,7 +45,6 @@ module.exports = function tttCommandHandler(events) {
             timeStamp: cmd.timeStamp
           }];
         } else {
-          console.log('AAAAAAAArrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrAAAAAAAAAA');
           return [{
             id: cmd.id,
             event: "GameCreated",

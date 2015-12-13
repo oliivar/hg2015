@@ -2,8 +2,8 @@
 
 var should = require('should');
 var request = require('supertest');
-var acceptanceUrl = process.env.ACCEPTANCE_URL;
-
+//var acceptanceUrl = process.env.ACCEPTANCE_URL;
+var acceptanceUrl = require('../app');
 
 describe('TEST ENV GET /api/gameHistory', function () {
 
@@ -55,10 +55,10 @@ describe('TEST ENV GET /api/gameHistory', function () {
 
 
    it('Should execute fluid API test', function (done) {
-     /*
+
      given(user("YourUser").createsGame("TheFirstGame"))
      .expect("GameCreated").withName("TheFirstGame").isOk(done);
-      */
+
      done();
    });
 
