@@ -2,14 +2,17 @@
 
 var should = require('should');
 var request = require('supertest');
-//var acceptanceUrl = process.env.ACCEPTANCE_URL;
-var acceptanceUrl = require('../app');
+
+var user = require('./user.js').user();
+var given = require('./given.js').given();
+
+var acceptanceUrl = process.env.ACCEPTANCE_URL;
+//var acceptanceUrl = require('../app');
 
 describe('TEST ENV GET /api/gameHistory', function () {
 
-
   it('Should have ACCEPTANCE_URL environment variable exported.', function () {
-    console.log('ACCEPTANCEURL ' + acceptanceUrl);
+    //console.log('ACCEPTANCE URL ' + acceptanceUrl);
     acceptanceUrl.should.be.ok;
   });
 
@@ -54,12 +57,14 @@ describe('TEST ENV GET /api/gameHistory', function () {
   });
 
 
-   it('Should execute fluid API test', function (done) {
+  it('Should execute fluid API test for Create game with gameName', function (done) {
+    given(user("Hrolfur").createsGame("Game").gameNamed("LaLLi"))
+      .expect("GameCreated").withName("LaLLi").isOk(done);
+  });
 
-     given(user("YourUser").createsGame("TheFirstGame"))
-     .expect("GameCreated").withName("TheFirstGame").isOk(done);
-
-     done();
+  it('Should execute fluid API test for Create game not with gameName', function (done) {
+     given(user('Stebbi').createsGame('80085')).
+     expect("GameCreated").withName("80085").isOk(done);
    });
 
 });

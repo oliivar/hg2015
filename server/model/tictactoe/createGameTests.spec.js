@@ -16,6 +16,7 @@ describe('Create game command', function(){
       id:"1234",
       event:"GameCreated",
       userName: "Stebbi",
+      gameName: "1337", 
       whosTurn: "X",
       gameID: "1337",
       timeStamp: "2015.12.02T11:29:44"

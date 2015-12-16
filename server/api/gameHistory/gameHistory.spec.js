@@ -18,7 +18,7 @@ describe('GET /api/gameHistory', function () {
 
     var req = request(app);
     req
-      .post('/api/CreateGame')
+      .post('/api/createGame')
       .type('json')
       .send(command)
       .end(function(err, res) {

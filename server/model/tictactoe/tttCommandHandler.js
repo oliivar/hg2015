@@ -33,6 +33,7 @@ module.exports = function tttCommandHandler(events) {
     if(eventHandler) eventHandler(event);
   });
   var handlers = {
+
     "createGame": function (cmd) {
       {
         if(cmd.gameName === undefined) {
@@ -40,6 +41,7 @@ module.exports = function tttCommandHandler(events) {
             id: cmd.id,
             event: "GameCreated",
             userName: cmd.userName,
+            gameName: cmd.gameID,
             whosTurn: 'X',
             gameID: cmd.gameID,
             timeStamp: cmd.timeStamp
@@ -69,7 +71,7 @@ module.exports = function tttCommandHandler(events) {
         }
         return [{
           id: cmd.id,
-          event: cmd.gameName + " Joined",
+          event: cmd.userName + " Joined "+cmd.gameName,
           userName: cmd.userName,
           otherUserName: gameState.gameCreatedEvent.userName,
           timeStamp: cmd.timeStamp

@@ -22,7 +22,7 @@ describe('Join game command', function(){
     };
     then=[{
       id:"12345",
-      event:"Stebbaleikur Joined",
+      event:"Hrolfur Joined Stebbaleikur",
       userName: "Hrolfur",
       otherUserName: "Stebbi",
       timeStamp: "2015.12.02T11:30:50"
