@@ -3,9 +3,9 @@
 Express server listening on 9000, in development mode
 [0m  TEST ENV GET /api/gameHistory[0m
 [2K[0G  [32m  ✓[0m[90m Should have ACCEPTANCE_URL environment variable exported. [0m
-[90mPOST /api/createGame [32m200 [90m18ms - 149b[0m
+[90mPOST /api/createGame [32m200 [90m15ms - 149b[0m
 [90mGET /api/gameHistory/1337 [32m200 [90m5ms - 149b[0m
-[2K[0G  [32m  ✓[0m[90m should execute same test using old style [0m[31m(248ms)[0m
+[2K[0G  [32m  ✓[0m[90m should execute same test using old style [0m[31m(283ms)[0m
 [90mPOST /api/createGame [32m200 [90m4ms - 142b[0m
 [90mGET /api/gameHistory/Game [32m200 [90m3ms - 142b[0m
 [2K[0G  [32m  ✓[0m[90m Should execute fluid API test for Create game with gameName [0m
@@ -14,5 +14,5 @@ Express server listening on 9000, in development mode
 [2K[0G  [32m  ✓[0m[90m Should execute fluid API test for Create game not with gameName [0m
 
 
-[92m [0m[32m 4 passing[0m[90m (339ms)[0m
+[92m [0m[32m 4 passing[0m[90m (351ms)[0m
 
