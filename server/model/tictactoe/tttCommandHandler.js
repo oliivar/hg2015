@@ -103,7 +103,7 @@ module.exports = function tttCommandHandler(events) {
           event: 'NotYourTurn',
           userName: cmd.userName,
           gameID: cmd.gameID,
-          timeStamp: cmd.timeStamp,
+          timeStamp: cmd.timeStamp
 
         }];
       } else {
