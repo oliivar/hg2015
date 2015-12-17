@@ -10,7 +10,9 @@ module.exports = function tttCommandHandler(events) {
   };
 
   var eventHandlers={
+
     'placed': function(event){
+
       gameState.board[event.place] = event.symbol;
       gameState.turns += 1;
       if (gameState.whosTurn === 'X') {
@@ -22,7 +24,15 @@ module.exports = function tttCommandHandler(events) {
   };
 
   function isWinner() {
-    if((gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2]) || (gameState.board[1] === gameState.board[4] && gameState.board[4] === gameState.board[7]) || (gameState.board[0] === gameState.board[4] && gameState.board[4] === gameState.board[8])) {
+    if((gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2])   // efsta larett rod
+      || (gameState.board[3] === gameState.board[4] && gameState.board[4] === gameState.board[5]) // midju larett rod
+      || (gameState.board[6] === gameState.board[7] && gameState.board[7] === gameState.board[8]) // nedsta larett rod
+      || (gameState.board[0] === gameState.board[3] && gameState.board[3] === gameState.board[6]) // fyrsta lodretta rod
+      || (gameState.board[1] === gameState.board[4] && gameState.board[4] === gameState.board[7]) // midju lodrett rod
+      || (gameState.board[2] === gameState.board[5] && gameState.board[5] === gameState.board[8]) // enda lodrett rod
+      || (gameState.board[0] === gameState.board[4] && gameState.board[4] === gameState.board[8]) // 0 - 8 ska
+      || (gameState.board[2] === gameState.board[4] && gameState.board[4] === gameState.board[6])) { // 2 - 6 ska
+
       return true;
     }
     return false;
@@ -71,7 +81,7 @@ module.exports = function tttCommandHandler(events) {
         }
         return [{
           id: cmd.id,
-          event: cmd.userName + " Joined "+cmd.gameName,
+          event: cmd.userName + " Joined "+ cmd.gameName,
           userName: cmd.userName,
           otherUserName: gameState.gameCreatedEvent.userName,
           timeStamp: cmd.timeStamp
@@ -85,8 +95,7 @@ module.exports = function tttCommandHandler(events) {
           event: 'illegalMove',
           userName: cmd.userName,
           gameID: cmd.gameID,
-          timeStamp: cmd.timeStamp,
-
+          timeStamp: cmd.timeStamp
         }];
       } else if (gameState.whosTurn !== cmd.symbol){
         return[{

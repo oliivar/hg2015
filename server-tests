@@ -1,10 +1,9 @@
 
 [0m[0m
-Express server listening on 9000, in test mode
 [0m  GET /api/gameHistory[0m
-[90mPOST /api/createGame [32m200 [90m49ms - 147b[0m
-[90mGET /api/gameHistory/999 [32m200 [90m10ms - 147b[0m
-[2K[0G  [32m  ✓[0m[90m should respond with JSON array with created events for game [0m[31m(630ms)[0m
+[90mPOST /api/createGame [32m200 [90m17ms - 147b[0m
+[90mGET /api/gameHistory/999 [32m200 [90m5ms - 147b[0m
+[2K[0G  [32m  ✓[0m[90m should respond with JSON array with created events for game [0m[31m(140ms)[0m
 
 [0m  In memory store[0m
 [2K[0G  [32m  ✓[0m[90m Should return empty array for unknown id [0m
@@ -20,18 +19,32 @@ Express server listening on 9000, in test mode
 [2K[0G  [32m  ✓[0m[90m should reject joining of a non-existing game [0m
 
 [0m  Game move commands[0m
+MAKING MOVE ON 1 turns 0 player Stebbi symbol X
+PLACED !@#$%^&*()
 [2K[0G  [32m  ✓[0m[90m Should place X in place(1) on empty board [0m
+MAKING MOVE ON 1 turns 1 player Hrolfur symbol O
+illegalMove
 [2K[0G  [32m  ✓[0m[90m Should try to place O in 1 when 1 already occupied [0m
+MAKING MOVE ON 2 turns 1 player Stebbi symbol X
+not your turn
 [2K[0G  [32m  ✓[0m[90m Should try to place X when its not his turn [0m
+MAKING MOVE ON 2 turns 4 player Stebbi symbol X
+winner
 [2K[0G  [32m  ✓[0m[90m Player should win on horizontal row [0m
+MAKING MOVE ON 1 turns 5 player Hrolfur symbol O
+winner
 [2K[0G  [32m  ✓[0m[90m Player should win on vertical row [0m
+MAKING MOVE ON 4 turns 4 player Stebbi symbol X
+winner
 [2K[0G  [32m  ✓[0m[90m Player should win on leaning row [0m
+MAKING MOVE ON 5 turns 8 player Stebbi symbol X
+WE HAVE A DRAW
 [2K[0G  [32m  ✓[0m[90m Game should end in draw [0m
 
 [0m  tictactoe game context[0m
 [2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return and store generated events. Test using fakes/stubs. [0m
-[2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. [0m[31m(82ms)[0m
+[2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. [0m
 
 
-[92m [0m[32m 17 passing[0m[90m (853ms)[0m
+[92m [0m[32m 17 passing[0m[90m (196ms)[0m
 

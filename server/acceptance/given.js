@@ -56,10 +56,36 @@ function given () {
         'ownerName': user.getUserName(),
         'gameName': user.getCommand().gameName,
         'currentUser': user,
-        'nextPlayer': 'X'
+        'whosTurn': 'X',
+        //'turns': 0
+
       },
       'expect': function (event) {
         givenAPI.condition.event = event;
+        return givenAPI;
+      },
+      'and': function (user) {
+        givenAPI.state.currentUser = user;
+
+
+        var newCommand = user.getCommand();
+
+        if (user.getCommand().command === 'JoinGame') {
+          newCommand.name = givenAPI.state.gameName;
+
+          givenAPI.state.joinerName = user.getUserName();
+        }
+
+        if (user.getCommand().command === 'makeMove') {
+          newCommand.gameID = givenAPI.state.gameID;
+          newCommand.gameName = givenAPI.state.gameName;
+          newCommand.symbol = givenAPI.state.whosTurn;
+
+          givenAPI.state.whosTurn = (givenAPI.state.whosTurn === 'X' ? 'O' : 'X');
+          givenAPI.state.turn += 1;
+        }
+
+        givenAPI.commands.push(newCommand);
         return givenAPI;
       },
       'withName': function (gameName) {
@@ -72,10 +98,13 @@ function given () {
           "gameID": givenAPI.state.gameID,
           "event": givenAPI.condition.event,
           "userName": givenAPI.state.currentUser.getUserName(),
-          "gameName": givenAPI.condition.gameName,
-          "timeStamp": "2017.12.02T10:29:44",
-          "whosTurn": givenAPI.state.nextPlayer
+          "timeStamp": "2017.12.02T10:29:44"
         };
+
+        if (givenAPI.condition.event === 'GameCreated') {
+          expectedEvent.gameName = givenAPI.condition.gameName;
+          expectedEvent.whosTurn = givenAPI.state.whosTurn;
+        }
 
         executeCommands(givenAPI.commands)
           .then(function () {

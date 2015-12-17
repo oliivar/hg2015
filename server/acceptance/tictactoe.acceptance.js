@@ -6,8 +6,8 @@ var request = require('supertest');
 var user = require('./user.js').user();
 var given = require('./given.js').given();
 
-var acceptanceUrl = process.env.ACCEPTANCE_URL;
-//var acceptanceUrl = require('../app');
+//var acceptanceUrl = process.env.ACCEPTANCE_URL;
+var acceptanceUrl = require('../app');
 
 describe('TEST ENV GET /api/gameHistory', function () {
 
@@ -63,8 +63,23 @@ describe('TEST ENV GET /api/gameHistory', function () {
   });
 
   it('Should execute fluid API test for Create game not with gameName', function (done) {
-     given(user('Stebbi').createsGame('80085')).
-     expect("GameCreated").withName("80085").isOk(done);
+     given(user('Stebbi').createsGame('8000085')).
+     expect("GameCreated").withName("8000085").isOk(done);
    });
+
+  it('Should play game until draw', function (done) {
+    given(user("Stefan").createsGame("42").gameNamed("ofurleikur"))
+      .and(user("Hreggvidur").joinsGame("42"))
+      .and(user("Stefan").makesMove(0))
+      .and(user("Hreggvidur").makesMove(8))
+      .and(user("Stefan").makesMove(2))
+      .and(user("Hreggvidur").makesMove(1))
+      .and(user("Stefan").makesMove(6))
+      .and(user("Hreggvidur").makesMove(3))
+      .and(user("Stefan").makesMove(7))
+      .and(user("Hreggvidur").makesMove(4))
+      .and(user("Stefan").makesMove(5))
+      .expect("Draw").withName("ofurleikur").isOk(done);
+  });
 
 });
