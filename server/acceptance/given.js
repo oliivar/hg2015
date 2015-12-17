@@ -71,9 +71,9 @@ function given () {
         var newCommand = user.getCommand();
 
         if (user.getCommand().command === 'JoinGame') {
-          newCommand.name = givenAPI.state.gameName;
+          newCommand.gameName = givenAPI.state.gameName;
 
-          givenAPI.state.joinerName = user.getUserName();
+          //givenAPI.state.joinerName = user.getUserName();
         }
 
         if (user.getCommand().command === 'makeMove') {
@@ -95,13 +95,22 @@ function given () {
       'isOk': function (done) {
         var expectedEvent = {
           "id": "1337",
-          "gameID": givenAPI.state.gameID,
           "event": givenAPI.condition.event,
           "userName": givenAPI.state.currentUser.getUserName(),
           "timeStamp": "2017.12.02T10:29:44"
         };
 
+        if (givenAPI.condition.event === 'Draw' || givenAPI.condition.event === givenAPI.state.currentUser.getUserName()+' Wins') {
+          expectedEvent.gameID = givenAPI.state.gameID;
+        }
+
+        if (givenAPI.condition.event === givenAPI.state.currentUser.getUserName() +' Joined ' + givenAPI.condition.gameName) {
+          expectedEvent.otherUserName = givenAPI.state.ownerName;
+        }
+
+
         if (givenAPI.condition.event === 'GameCreated') {
+          expectedEvent.gameID = givenAPI.state.gameID;
           expectedEvent.gameName = givenAPI.condition.gameName;
           expectedEvent.whosTurn = givenAPI.state.whosTurn;
         }

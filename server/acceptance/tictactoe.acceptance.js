@@ -67,6 +67,12 @@ describe('TEST ENV GET /api/gameHistory', function () {
      expect("GameCreated").withName("8000085").isOk(done);
    });
 
+  it('Should allow user to join a game', function (done) {
+    given(user("Gudmundur").createsGame('BUlBs').gameNamed('BreakDancers'))
+      .and(user("Adalsteinn").joinsGame('BUlBs'))
+      .expect("Adalsteinn Joined BreakDancers").withName("BreakDancers").isOk(done);
+  });
+
   it('Should play game until draw', function (done) {
     given(user("Stefan").createsGame("42").gameNamed("ofurleikur"))
       .and(user("Hreggvidur").joinsGame("42"))
@@ -83,14 +89,14 @@ describe('TEST ENV GET /api/gameHistory', function () {
   });
 
   it('Should play game until winner', function (done) {
-    given(user("Stefan").createsGame("42").gameNamed("ofurSleikur"))
+    given(user("Stefan").createsGame("422").gameNamed("ofurSleikur"))
       .and(user("Hreggvidur").joinsGame("422"))
-      .and(user("Stefan").makesMove(0))
-      .and(user("Hreggvidur").makesMove(8))
-      .and(user("Stefan").makesMove(2))
-      .and(user("Hreggvidur").makesMove(4))
       .and(user("Stefan").makesMove(3))
-      .expect("Wins").withName("ofurSleikur").isOk(done);
+      .and(user("Hreggvidur").makesMove(8))
+      .and(user("Stefan").makesMove(4))
+      .and(user("Hreggvidur").makesMove(1))
+      .and(user("Stefan").makesMove(5))
+      .expect("Stefan Wins").withName("ofurSleikur").isOk(done);
   });
 
 });
