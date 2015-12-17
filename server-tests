@@ -1,11 +1,10 @@
 
 [0m[0m
-Express server listening on 9000, in development mode
+Express server listening on 9000, in test mode
 [0m  GET /api/gameHistory[0m
-GameNAme = Stebbaleikur
-[90mPOST /api/createGame [32m200 [90m17ms - 147b[0m
-[90mGET /api/gameHistory/999 [32m200 [90m5ms - 147b[0m
-[2K[0G  [32m  ✓[0m[90m should respond with JSON array with created events for game [0m[31m(124ms)[0m
+[90mPOST /api/createGame [32m200 [90m16ms - 147b[0m
+[90mGET /api/gameHistory/999 [32m200 [90m4ms - 147b[0m
+[2K[0G  [32m  ✓[0m[90m should respond with JSON array with created events for game [0m[31m(211ms)[0m
 
 [0m  In memory store[0m
 [2K[0G  [32m  ✓[0m[90m Should return empty array for unknown id [0m
@@ -13,9 +12,7 @@ GameNAme = Stebbaleikur
 [2K[0G  [32m  ✓[0m[90m should append stored events to events previously stored [0m
 
 [0m  Create game command[0m
-No GameNAme
 [2K[0G  [32m  ✓[0m[90m create game without gameName [0m
-GameNAme = Hrolfsleikur
 [2K[0G  [32m  ✓[0m[90m should create game with another user another time with gameName [0m
 
 [0m  Join game command[0m
@@ -33,8 +30,8 @@ GameNAme = Hrolfsleikur
 
 [0m  tictactoe game context[0m
 [2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return and store generated events. Test using fakes/stubs. [0m
-[2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. [0m[33m(50ms)[0m
+[2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. [0m[33m(66ms)[0m
 
 
-[92m [0m[32m 17 passing[0m[90m (211ms)[0m
+[92m [0m[32m 17 passing[0m[90m (304ms)[0m
 

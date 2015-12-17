@@ -24,15 +24,7 @@ module.exports = function tttCommandHandler(events) {
   };
 
   function isWinner() {
-    if((gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2])   // efsta larett rod
-      || (gameState.board[3] === gameState.board[4] && gameState.board[4] === gameState.board[5]) // midju larett rod
-      || (gameState.board[6] === gameState.board[7] && gameState.board[7] === gameState.board[8]) // nedsta larett rod
-      || (gameState.board[0] === gameState.board[3] && gameState.board[3] === gameState.board[6]) // fyrsta lodretta rod
-      || (gameState.board[1] === gameState.board[4] && gameState.board[4] === gameState.board[7]) // midju lodrett rod
-      || (gameState.board[2] === gameState.board[5] && gameState.board[5] === gameState.board[8]) // enda lodrett rod
-      || (gameState.board[0] === gameState.board[4] && gameState.board[4] === gameState.board[8]) // 0 - 8 ska
-      || (gameState.board[2] === gameState.board[4] && gameState.board[4] === gameState.board[6])) { // 2 - 6 ska
-
+    if((gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2]) || (gameState.board[3] === gameState.board[4] && gameState.board[4] === gameState.board[5]) || (gameState.board[6] === gameState.board[7] && gameState.board[7] === gameState.board[8]) || (gameState.board[0] === gameState.board[3] && gameState.board[3] === gameState.board[6]) || (gameState.board[1] === gameState.board[4] && gameState.board[4] === gameState.board[7]) || (gameState.board[2] === gameState.board[5] && gameState.board[5] === gameState.board[8]) || (gameState.board[0] === gameState.board[4] && gameState.board[4] === gameState.board[8]) || (gameState.board[2] === gameState.board[4] && gameState.board[4] === gameState.board[6])) {
       return true;
     }
     return false;

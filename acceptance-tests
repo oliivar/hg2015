@@ -3,42 +3,42 @@
 Express server listening on 9000, in development mode
 [0m  TEST ENV GET /api/gameHistory[0m
 [2K[0G  [32m  ✓[0m[90m Should have ACCEPTANCE_URL environment variable exported. [0m
-[90mPOST /api/createGame [32m200 [90m16ms - 149b[0m
-[90mGET /api/gameHistory/1337 [32m200 [90m6ms - 149b[0m
-[2K[0G  [32m  ✓[0m[90m should execute same test using old style [0m[31m(128ms)[0m
-[90mPOST /api/createGame [32m200 [90m4ms - 142b[0m
-[90mGET /api/gameHistory/Game [32m200 [90m3ms - 142b[0m
+[90mPOST /api/createGame [32m200 [90m20ms - 149b[0m
+[90mGET /api/gameHistory/1337 [32m200 [90m5ms - 149b[0m
+[2K[0G  [32m  ✓[0m[90m should execute same test using old style [0m[31m(216ms)[0m
+[90mPOST /api/createGame [32m200 [90m6ms - 142b[0m
+[90mGET /api/gameHistory/Game [32m200 [90m2ms - 142b[0m
 [2K[0G  [32m  ✓[0m[90m Should execute fluid API test for Create game with gameName [0m
 [90mPOST /api/createGame [32m200 [90m2ms - 146b[0m
 [90mGET /api/gameHistory/8000085 [32m200 [90m1ms - 146b[0m
 [2K[0G  [32m  ✓[0m[90m Should execute fluid API test for Create game not with gameName [0m
-[90mPOST /api/createGame [32m200 [90m1ms - 152b[0m
+[90mPOST /api/createGame [32m200 [90m2ms - 152b[0m
 [90mPOST /api/JoinGame [32m200 [90m2ms - 142b[0m
-[90mGET /api/gameHistory/BUlBs [32m200 [90m2ms - 293b[0m
+[90mGET /api/gameHistory/BUlBs [32m200 [90m1ms - 293b[0m
 [2K[0G  [32m  ✓[0m[90m Should allow user to join a game [0m
-[90mPOST /api/createGame [32m200 [90m6ms - 144b[0m
-[90mPOST /api/JoinGame [32m200 [90m1ms - 137b[0m
+[90mPOST /api/createGame [32m200 [90m1ms - 144b[0m
+[90mPOST /api/JoinGame [32m200 [90m2ms - 137b[0m
+[90mPOST /api/makeMove [32m200 [90m3ms - 123b[0m
+[90mPOST /api/makeMove [32m200 [90m2ms - 127b[0m
+[90mPOST /api/makeMove [32m200 [90m1ms - 123b[0m
+[90mPOST /api/makeMove [32m200 [90m1ms - 127b[0m
 [90mPOST /api/makeMove [32m200 [90m2ms - 123b[0m
 [90mPOST /api/makeMove [32m200 [90m1ms - 127b[0m
-[90mPOST /api/makeMove [32m200 [90m1ms - 123b[0m
-[90mPOST /api/makeMove [32m200 [90m1ms - 127b[0m
-[90mPOST /api/makeMove [32m200 [90m5ms - 123b[0m
-[90mPOST /api/makeMove [32m200 [90m0ms - 127b[0m
-[90mPOST /api/makeMove [32m200 [90m1ms - 123b[0m
+[90mPOST /api/makeMove [32m200 [90m0ms - 123b[0m
 [90mPOST /api/makeMove [32m200 [90m2ms - 127b[0m
-[90mPOST /api/makeMove [32m200 [90m4ms - 98b[0m
+[90mPOST /api/makeMove [32m200 [90m1ms - 98b[0m
 [90mGET /api/gameHistory/42 [32m200 [90m14ms[0m
-[2K[0G  [32m  ✓[0m[90m Should play game until draw [0m[31m(101ms)[0m
+[2K[0G  [32m  ✓[0m[90m Should play game until draw [0m[31m(113ms)[0m
 [90mPOST /api/createGame [32m200 [90m2ms - 146b[0m
-[90mPOST /api/JoinGame [32m200 [90m4ms - 138b[0m
-[90mPOST /api/makeMove [32m200 [90m1ms - 124b[0m
+[90mPOST /api/JoinGame [32m200 [90m2ms - 138b[0m
+[90mPOST /api/makeMove [32m200 [90m3ms - 124b[0m
 [90mPOST /api/makeMove [32m200 [90m1ms - 128b[0m
-[90mPOST /api/makeMove [32m200 [90m1ms - 124b[0m
+[90mPOST /api/makeMove [32m200 [90m4ms - 124b[0m
 [90mPOST /api/makeMove [32m200 [90m1ms - 128b[0m
-[90mPOST /api/makeMove [32m200 [90m2ms - 106b[0m
+[90mPOST /api/makeMove [32m200 [90m9ms - 106b[0m
 [90mGET /api/gameHistory/422 [32m200 [90m1ms - 888b[0m
-[2K[0G  [32m  ✓[0m[90m Should play game until winner [0m[33m(54ms)[0m
+[2K[0G  [32m  ✓[0m[90m Should play game until winner [0m[33m(64ms)[0m
 
 
-[92m [0m[32m 7 passing[0m[90m (361ms)[0m
+[92m [0m[32m 7 passing[0m[90m (510ms)[0m
 
